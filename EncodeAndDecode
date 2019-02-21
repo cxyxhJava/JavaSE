@@ -1,0 +1,76 @@
+/**
+ * Created by franyang on 2017/3/8.
+ */
+public class EncodeAndDecode {
+
+    /**
+     * 1.file 文件的編碼和解碼
+     * file文件的編碼格式修改
+     * 設置文件默認為gkb（windows默認編碼）
+     * 設置修改后的文件編碼為UTF-8
+     *不考虑utf是否有bom
+     */
+    @Test
+    public void checkFileEncode() throws FileNotFoundException,IOException{
+        File file = new File("c:","test.txt");
+        FileInputStream inputStream = null;
+        StringBuilder stringBuilder =null;
+        InputStreamReader inputStreamReader =null;
+        if (!file.exists()) {
+           return;
+        }
+        inputStream = new FileInputStream(file);
+
+        inputStreamReader = new InputStreamReader(inputStream,getFileEncode());
+        char[] data = new char[255];
+        int lenght = 0;
+        stringBuilder = new StringBuilder();
+        while(true){
+            lenght = inputStreamReader.read(data);
+            if (lenght==-1){
+                break;
+            }
+            stringBuilder.append(data);
+        }
+        System.out.println(stringBuilder.toString());
+
+        inputStreamReader.close();
+        inputStream.close();
+
+        FileOutputStream fileOutputStream = new FileOutputStream(file);
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream,"UTF-8");
+        outputStreamWriter.write("你好utf");
+        outputStreamWriter.close();
+        fileOutputStream.close();
+    }
+    /**
+     * 判断文件编码格式
+     */
+
+   public static String getFileEncode() throws  IOException{
+        File file = new File("c:","test.txt");
+       BufferedInputStream bin = new BufferedInputStream(new FileInputStream(file));
+        int p = (bin.read() << 8) + bin.read();
+        String code = null;
+        //其中的 0xefbb、0xfffe、0xfeff、0x5c75这些都是这个文件的前面两个字节的16进制数
+        System.out.println("p:"+p);
+        switch (p) {
+            case 0xefbb:
+                code = "UTF-8";
+                break;
+            case 0xfffe:
+                code = "Unicode";
+                break;
+            case 0xfeff:
+                code = "UTF-16BE";
+                break;
+            case 0x5c75:
+                code = "ANSI|ASCII" ;
+                break ;
+            default:
+                code = "GBK";
+        }
+        System.out.println("code:"+code);
+        return code;
+   }
+}
