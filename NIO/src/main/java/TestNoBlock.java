@@ -2,11 +2,11 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.nio.ByteBuffer;
-import java.nio.channels.*;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -14,7 +14,7 @@ import java.util.Scanner;
 /**
  * @ Author     ：杨晓波
  * @ Date       ：Created in 13:06 2019-08-01
- * @ Description：
+ * @ Description：TCP NIO发送demo
  * @ Modified By：
  */
 public class TestNoBlock {

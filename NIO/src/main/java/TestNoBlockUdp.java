@@ -13,7 +13,7 @@ import java.util.Scanner;
 /**
  * @ Author     ：杨晓波
  * @ Date       ：Created in 10:28 2019-08-02
- * @ Description：
+ * @ Description：UDP的NIO传输代码demo
  * @ Modified By：
  */
 public class TestNoBlockUdp {

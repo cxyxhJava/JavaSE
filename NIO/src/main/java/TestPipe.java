@@ -7,7 +7,7 @@ import java.nio.channels.Pipe;
 /**
  * @ Author     ：杨晓波
  * @ Date       ：Created in 10:45 2019-08-02
- * @ Description：
+ * @ Description：管道发送消息
  * @ Modified By：
  */
 public class TestPipe {
