@@ -11,6 +11,9 @@
     <modules>
         <module>NIO</module>
         <module>netty</module>
+        <module>functionalprogramming</module>
+        <module>JUC</module>
+        <module>util</module>
     </modules>
 
 
