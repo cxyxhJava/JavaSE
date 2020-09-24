@@ -17,6 +17,7 @@
         <module>annotation</module>
         <module>leetCode</module>
         <module>lock</module>
+        <module>se</module>
     </modules>
 
     <dependencies>
