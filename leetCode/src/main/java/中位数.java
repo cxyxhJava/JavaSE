@@ -21,7 +21,7 @@ public class 中位数 {
      */
     private static int get中位数方法1(int[] a, int[] b){
 
-
+        return 0;
     }
 
     /**

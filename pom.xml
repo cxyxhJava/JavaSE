@@ -18,6 +18,8 @@
         <module>leetCode</module>
         <module>lock</module>
         <module>se</module>
+        <module>concurrent</module>
+        <module>HUTOOL</module>
     </modules>
 
     <dependencies>
